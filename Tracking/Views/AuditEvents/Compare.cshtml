@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Tracking.BL.DTOs.AuditEventsTmpDTO>
+
+@{
+    ViewBag.Title = "Compare";
+}
+
+<h2>Classification</h2>
+<hr />
+
+<p class="btn-success">Object Initial</p>
+<p class="btn-danger">Object Deleted</p>
+<p class="btn-warning">Object Modify</p>
+<hr />
+
+<h2>Compare</h2>
+<hr />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SchemaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ObjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ObjectType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="btn-@item.Color">
+            <td>
+                @Html.DisplayFor(modelItem => item.SchemaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObjectType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.ActionLink("Show", "", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

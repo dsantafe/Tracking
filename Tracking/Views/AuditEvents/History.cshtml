@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Tracking.BL.DTOs.AuditEventsDTO>
+
+@{
+    ViewBag.Title = "History";
+}
+
+<h2>Classification</h2>
+<hr />
+
+<p class="btn-success">Object Initial</p>
+<p class="btn-warning">Object New</p>
+<p class="btn-info">Object Modify</p>
+<hr />
+
+<h2>History</h2>
+<hr />
+
+@if (ViewBag.Releases != null)
+{
+
+    var listReleases = (List<string>)ViewBag.Releases;
+
+    foreach (var item in listReleases)
+    {
+        var listAuditEventsDTO = Model.Where(x => x.ReleaseName == item);
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@item</h3>
+            </div>
+            <div class="panel-body">
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SchemaName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ObjectName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ObjectType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EventTime)
+                        </th>
+                    </tr>
+
+                    @foreach (var elem in listAuditEventsDTO)
+                    {
+                        <tr class="btn-@elem.Color">
+                            <td>
+                                @Html.DisplayFor(modelItem => elem.SchemaName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => elem.ObjectName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => elem.ObjectType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => elem.EventTime)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    }
+}

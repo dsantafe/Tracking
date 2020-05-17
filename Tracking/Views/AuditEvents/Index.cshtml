@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<hr />
+<p>
+    @Html.ActionLink("Create New", "Create") | @Html.ActionLink("Show History", "History")
+</p>
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            Release Name
+        </th>
+        <th></th>
+    </tr>
+
+    @{
+        int row = 0;
+
+        foreach (var item in (List<string>)ViewBag.AuditEventsDTO)
+        {
+            <tr>
+                <td>@item</td>
+                <td>
+                    @Html.ActionLink("Details", "Index", new { id = row }) |
+                    @Html.ActionLink("Compare", "Compare", new { id = row }) |
+                </td>
+            </tr>
+
+            row++;
+        }
+    }
+</table>
+
+@if (ViewBag.AuditEventsDetailsDTO != null)
+{
+    var listAuditEventsDetailsDTO = (List<Tracking.BL.DTOs.AuditEventsDTO>)ViewBag.AuditEventsDetailsDTO;
+
+    <h2>Details</h2>
+
+    <table class="table">
+        <tr>
+            <th>Release Name</th>
+            <th>Schema Name</th>
+            <th>Object Name</th>
+            <th>Object Type</th>
+            <th>Event Time</th>
+            <th>Create Date</th>
+            <th></th>
+        </tr>
+        @foreach (var item in listAuditEventsDetailsDTO)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SchemaName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ObjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ObjectType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+            </tr>
+        }
+    </table>
+}
