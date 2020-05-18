@@ -52,6 +52,49 @@ namespace Tracking.BL.Services
             }
         }
 
+        public List<AuditEventsDDLDTO> GetDDLObject(int id)
+        {
+            try
+            {
+                var listAuditEventsDDLDTO = new List<AuditEventsDDLDTO>();
+
+                command = new SqlCommand("GetDDLObject", TrackingContext.GetConnection())
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                command.Parameters.AddRange(new SqlParameter[] {
+                    new SqlParameter("@Id", id)
+                });
+
+                DataSet dataSet = new DataSet();
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataSet);
+
+                foreach (DataRow item in dataSet.Tables[0].Rows)
+                {
+                    listAuditEventsDDLDTO.Add(new AuditEventsDDLDTO
+                    {
+                        Id = (int)item["Id"],
+                        DDLCommand = (string)item["DDLCommand"],
+                        DDLDatabaseName = (string)item["DDLDatabaseName"],
+                        DDLEventTime = (DateTime)item["DDLEventTime"],
+                        DDLLoginName = (string)item["DDLLoginName"],
+                        DDLObjectName = (string)item["DDLObjectName"],
+                        DDLObjectType = (string)item["DDLObjectType"],
+                        DDLSchemaName = (string)item["DDLSchemaName"],
+                        DDLUserName = (string)item["DDLUserName"]
+                    });
+                }
+
+                return listAuditEventsDDLDTO;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<AuditEventsDTO> GetReleasesHistory()
         {
             try

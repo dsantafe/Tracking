@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Tracking.BL.DTOs.AuditEventsDDLDTO>
+
+@{
+    ViewBag.Title = "ShowObjectChanges";
+}
+
+<h2>Show Object Changes</h2>
+<hr />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DDLSchemaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DDLObjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DDLObjectType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DDLEventTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DDLCommand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DDLLoginName)
+        </th>        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DDLSchemaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DDLObjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DDLObjectType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DDLEventTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DDLCommand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DDLLoginName)
+            </td>                
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

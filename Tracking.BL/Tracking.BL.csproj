@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\TrackingContext.cs" />
+    <Compile Include="DTOs\AuditEventsDDLDTO.cs" />
     <Compile Include="DTOs\AuditEventsDTO.cs" />
     <Compile Include="DTOs\AuditEventsTmpDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

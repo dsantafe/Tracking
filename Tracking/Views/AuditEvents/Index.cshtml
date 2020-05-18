@@ -25,7 +25,7 @@
                 <td>@item</td>
                 <td>
                     @Html.ActionLink("Details", "Index", new { id = row }) |
-                    @Html.ActionLink("Compare", "Compare", new { id = row }) |
+                    @Html.ActionLink("Compare with current", "Compare", new { id = row }) |
                 </td>
             </tr>
 
@@ -40,22 +40,20 @@
 
     <h2>Details</h2>
 
-    <table class="table">
+    <input type="text" id="ObjectTypeName" class="form-control" onkeyup="filterTable()" placeholder="Search for object type..">
+    <table class="table" id="Grid">
         <tr>
-            <th>Release Name</th>
             <th>Schema Name</th>
             <th>Object Name</th>
             <th>Object Type</th>
             <th>Event Time</th>
             <th>Create Date</th>
-            <th></th>
+            <th>Release Name</th>
+            <th></th>            
         </tr>
         @foreach (var item in listAuditEventsDetailsDTO)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReleaseName)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SchemaName)
                 </td>
@@ -70,6 +68,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseName)
                 </td>
             </tr>
         }

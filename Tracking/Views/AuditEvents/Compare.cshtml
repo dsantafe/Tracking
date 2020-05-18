@@ -12,10 +12,11 @@
 <p class="btn-warning">Object Modify</p>
 <hr />
 
-<h2>Compare</h2>
+<h2>Compare with current</h2>
 <hr />
 
-<table class="table">
+<input type="text" id="ObjectTypeName" class="form-control" onkeyup="filterTable()" placeholder="Search for object type..">
+<table class="table table-responsive" id="Grid">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.SchemaName)
@@ -72,7 +73,10 @@
                 @Html.DisplayFor(modelItem => item.CreateDate)
             </td>
             <td>
-                @Html.ActionLink("Show", "", new { id = item.Id })
+                @if (item.ObjectType.Equals("USER_TABLE"))
+                {
+                    @Html.ActionLink("Select", "ShowObjectChanges", new { id = item.Id }, new { @class = "btn btn-primary" })
+                }
             </td>
         </tr>
     }

@@ -55,6 +55,12 @@ namespace Tracking.Controllers
             return View(listAuditEventsTmp);
         }
 
+        public ActionResult ShowObjectChanges(int? id)
+        {
+            var listAuditEventsDDLDTO = auditEventsService.GetDDLObject(id.Value);            
+            return View(listAuditEventsDDLDTO);
+        }
+
         public ActionResult Create()
         {
             return View();
@@ -69,13 +75,13 @@ namespace Tracking.Controllers
                 {
                     var message = auditEventsService.CreateRelease(auditEventsDTO.ReleaseName);
                     ViewBag.Message = message;
-                    ViewBag.Type = "success";
+                    ViewBag.Type = "info";
                 }
             }
             catch (Exception ex)
             {
                 ViewBag.Message = ex.Message;
-                ViewBag.Type = "error";
+                ViewBag.Type = "danger";
             }
 
             return View(auditEventsDTO);
