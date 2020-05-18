@@ -17,14 +17,15 @@ namespace Tracking.BL.Data
         /// METODO QUE ESTABLECE LA CONEXION
         /// </summary>
         /// <returns></returns>
-        public static SqlConnection GetConnection()
+        public static SqlConnection GetConnection(bool flag = false, string cnxNew = "")
         {
 
             try
             {
-                if (connection == null)
+                if (connection == null || flag)
                 {
-                    string cnx = ConfigurationManager.ConnectionStrings["TrackingContext"].ToString();
+                    string cnx = flag ? cnxNew : ConfigurationManager.ConnectionStrings["TrackingContext"].ToString();
+
                     connection = new SqlConnection(cnx);
                     connection.Open();
                 }

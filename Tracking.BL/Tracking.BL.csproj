@@ -47,8 +47,10 @@
     <Compile Include="DTOs\AuditEventsDDLDTO.cs" />
     <Compile Include="DTOs\AuditEventsDTO.cs" />
     <Compile Include="DTOs\AuditEventsTmpDTO.cs" />
+    <Compile Include="DTOs\ConnectionDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuditEventsService.cs" />
+    <Compile Include="Services\ConnectionService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
