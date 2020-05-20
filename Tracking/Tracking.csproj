@@ -143,6 +143,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Docs\ARQUITECTURA DE REFERENCIA-PRY-TRACKING.pdf" />
     <Content Include="Docs\DT-ARQUITECTURA-PRY-TRACKING.pdf" />
+    <Content Include="Docs\Reto 02 Alteracion Base de Datos.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
